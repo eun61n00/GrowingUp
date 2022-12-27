@@ -1,4 +1,4 @@
-package ch02;
+package ch04;
 
 public class Customer {
 
@@ -8,10 +8,11 @@ public class Customer {
     protected int bonusPoint;
     protected double bonusRatio;
 
-    public Customer() {
+    public Customer(int customerId, String customerName) {
+        this.customerId = customerId;
+        this.customerName = customerName;
         this.customerGrade = "SILVER";
         this.bonusRatio = 0.01;
-        System.out.println("Customer() called");
     }
 
     public int getCustomerId() {
@@ -64,9 +65,10 @@ public class Customer {
         return "Customer{" +
                 "customerId=" + customerId +
                 ", customerName='" + customerName + '\'' +
-                ", custormerGrade='" + customerGrade + '\'' +
+                ", customerGrade='" + customerGrade + '\'' +
                 ", bonusPoint=" + bonusPoint +
                 ", bonusRatio=" + bonusRatio +
                 '}';
     }
+
 }
