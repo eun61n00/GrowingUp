@@ -1,2 +1,9 @@
-package com.hellomygreenworld.ex00.sample;public class Chef {
+package com.hellomygreenworld.ex00.sample;
+
+import lombok.Data;
+import org.springframework.stereotype.Component;
+
+@Component
+@Data
+public class Chef {
 }

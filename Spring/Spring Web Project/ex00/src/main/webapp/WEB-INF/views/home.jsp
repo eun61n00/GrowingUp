@@ -7,6 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<style>
+    @media (max-width: 600px) {
+        .title {
+            font-size: 20px;
+        }
+    }
+</style>
+
 <head>
     <title>Home</title>
 </head>
