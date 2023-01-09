@@ -1,4 +1,4 @@
-package ch13.domain.userinfo.web.userinfo;
+package ch13.web.userinfo;
 
 import ch13.domain.userinfo.UserInfo;
 import ch13.domain.userinfo.dao.UserInfoDAO;
@@ -6,9 +6,7 @@ import ch13.domain.userinfo.dao.mysql.UserInfoMysqlDAO;
 import ch13.domain.userinfo.dao.oracle.UserInfoOracleDAO;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Properties;
 
 public class UserInfoClient {

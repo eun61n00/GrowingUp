@@ -7,3 +7,6 @@
 [submodule "React/react-complete-guide-code"]
 	path = React/react-complete-guide-code
 	url = https://github.com/academind/react-complete-guide-code
+[submodule "Spring/FastCampus Java Spring Web Development/FastCampus"]
+	path = Spring/FastCampus Java Spring Web Development/FastCampus
+	url = https://github.com/easyspubjava/FastCampus
