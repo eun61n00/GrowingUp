@@ -4,6 +4,7 @@ import com.hellomygreenworld.ex01.domain.SampleDTO;
 import com.hellomygreenworld.ex01.domain.SampleDTOList;
 import com.hellomygreenworld.ex01.domain.TodoDTO;
 import lombok.extern.log4j.Log4j;
+import org.apache.ibatis.javassist.tools.rmi.Sample;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -97,8 +98,8 @@ public class SampleController {
     public @ResponseBody SampleDTO ex08() {
         log.info("----- ex08 -----");
         SampleDTO dto = new SampleDTO();
-        dto.setAge(20);
         dto.setName("eunbin");
+        dto.setAge(20);
 
         return dto;
     }

@@ -1,25 +1,8 @@
-.DS_Store
-*/*/.DS_Store
-
-*/*/out/
-out
-
-.idea/
-*/*/.idea
-
-
-node_modules/
-.prettierignore
-package-lock.json
-package.json
-
 target/
-*/*/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 lib/
-*/*/lib/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -46,7 +29,6 @@ lib/
 /nbdist/
 /.nb-gradle/
 build/
-*/*/build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
