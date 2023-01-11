@@ -43,7 +43,7 @@ public class BoardMapperTests {
         boardVO.setContent("inserted content select key");
         boardVO.setWriter("inserted writer select key");
 
-        mapper.insert(boardVO);
+        mapper.insertSelectKey(boardVO);
         log.info(boardVO);
     }
 
@@ -56,7 +56,7 @@ public class BoardMapperTests {
 
     @Test
     public void testDelete() {
-        log.info("DELETE COUNT: " + mapper.delete(8));
+        log.info("DELETE COUNT: " + mapper.delete(10));
     }
 
     @Test
