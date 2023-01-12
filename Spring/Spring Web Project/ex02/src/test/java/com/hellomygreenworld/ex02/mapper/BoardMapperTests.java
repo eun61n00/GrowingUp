@@ -1,6 +1,7 @@
 package com.hellomygreenworld.ex02.mapper;
 
 import com.hellomygreenworld.ex02.domain.BoardVO;
+import com.hellomygreenworld.ex02.domain.Criteria;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+
+import java.util.List;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,14 +29,25 @@ public class BoardMapperTests {
     }
 
     @Test
-    public void testInsert() {
-        BoardVO boardVO = new BoardVO();
-        boardVO.setTitle("inserted title");
-        boardVO.setContent("inserted content");
-        boardVO.setWriter("inserted writer");
+    public void testGetListWithPaging() {
+        Criteria criteria = new Criteria();
+        List<BoardVO> list = mapper.getListWithPaging(criteria);
+        list.forEach(boardVO -> log.info(boardVO));
+    }
 
-        mapper.insert(boardVO);
-        log.info(boardVO);
+    @Test
+    public void testInsert() {
+
+        for (int i = 0; i < 100000 ; i++) {
+
+            BoardVO boardVO = new BoardVO();
+            boardVO.setTitle("inserted title");
+            boardVO.setContent("inserted content");
+            boardVO.setWriter("inserted writer");
+
+            mapper.insert(boardVO);
+            log.info(boardVO);
+        }
     }
 
     @Test
