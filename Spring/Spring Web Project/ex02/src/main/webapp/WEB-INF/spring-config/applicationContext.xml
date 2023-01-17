@@ -33,6 +33,7 @@
     <context:component-scan base-package="com.hellomygreenworld.ex02.controller"/>
     <context:component-scan base-package="com.hellomygreenworld.ex02.mapper"/>
     <context:component-scan base-package="com.hellomygreenworld.ex02.service"/>
+    <context:component-scan base-package="com.hellomygreenworld.ex02.exception"/>
 
     <mybatis-spring:scan base-package="com.hellomygreenworld.ex02.mapper"/>
 

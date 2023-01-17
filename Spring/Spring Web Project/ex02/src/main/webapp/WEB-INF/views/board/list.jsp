@@ -31,7 +31,7 @@
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <table width="100%" class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>
                             <th># Number</th>
@@ -43,14 +43,33 @@
                         </thead>
                         <c:forEach items="${list}" var="board">
                         <tr>
-                            <td><c:out value="${board.bno}" /></td>
-                            <td><a href="/board/get?bno=<c:out value="${board.bno}"/>"><c:out value="${board.title}" /></a></td>
+                            <td><c:out value="${board.id}" /></td>
+                            <td><a href="/board/get?id=<c:out value="${board.id}"/>"><c:out value="${board.title}" /></a></td>
                             <td><c:out value="${board.writer}" /></td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}" /></td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updatedate}" /></td>
                         </tr>
                         </c:forEach>
                     </table>
+
+                    <div class="pull-right">
+                        <ul class="pagination">
+                            <c:if test="${PageDTO.prev}">
+                                <li class="paginate_button previous"><a href="${PageDTO.startPage - 1}">Privious</a> </li>
+                            </c:if>
+                            <c:forEach var="num" begin="${PageDTO.startPage}" end="${PageDTO.endPage}">
+                                <li class="paginate_button ${PageDTO.criteria.getPageNum() == num ? "active" : ""}"><a href="${num}"><c:out value="${num}" /></a></li>
+                            </c:forEach>
+                            <c:if test="${PageDTO.next}">
+                                <li class="paginate_button next"><a href="${PageDTO.endPage + 1}">Next</a> </li>
+                            </c:if>
+                        </ul>
+                    </div>
+
+                    <form id="actionForm" action="/board/list" method="get">
+                        <input type="hidden" name="pageNum" value="${PageDTO.criteria.getPageNum()}">
+                        <input type="hidden" name="amount" value="${pageDTO.criteria.getAmount()}">
+                    </form>
 
                     <!-- Modal Window -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -83,6 +102,7 @@
 <%@include file="../includes/footer.jsp"%>
 
 <script type-="text/javascript">
+
     $(document).ready(function () {
         var result = '<c:out value="${result}" />';
 
@@ -105,5 +125,17 @@
         $("#regBtn").on("click", function() {
             self.location = "/board/register";
         });
+
+        var actionForm = $("#actionForm")
+
+        $(".paginate_button a").on("click", function (e) {
+            e.preventDefault();
+            console.log("click");
+
+            actionForm.find("[name='pageNum']").val($(this).attr("href"));
+            actionForm.submit();
+
+        });
     });
+
 </script>

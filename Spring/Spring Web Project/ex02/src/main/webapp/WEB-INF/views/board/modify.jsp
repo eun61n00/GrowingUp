@@ -29,7 +29,7 @@
                         <form type="form" action="/board/modify" method="post">
                             <div class="form-group">
                                 <label>Bno</label>
-                                <input class="form-control" name="bno" value=<c:out value="${board.bno}" /> readonly="readonly">
+                                <input class="form-control" name="id" value=<c:out value="${board.id}" /> readonly="readonly">
                             </div>
                             <div class="form-group">
                                 <label>Title</label>

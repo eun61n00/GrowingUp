@@ -1,7 +1,8 @@
-package com.hellomygreenworld.ex02.mapper;
+package com.hellomygreenworld.ex02.boardMapper;
 
 import com.hellomygreenworld.ex02.domain.BoardVO;
 import com.hellomygreenworld.ex02.domain.Criteria;
+import com.hellomygreenworld.ex02.mapper.BoardMapper;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
@@ -20,18 +21,18 @@ import java.util.List;
 public class BoardMapperTests {
 
     @Setter(onMethod_ = {@Autowired})
-    private BoardMapper mapper;
+    private BoardMapper boardMapper;
 
     @Test
     public void testGetList() {
-        log.info(mapper.getList());
-        mapper.getList().forEach(board -> log.info(board));
+        log.info(boardMapper.getList());
+        boardMapper.getList().forEach(board -> log.info(board));
     }
 
     @Test
     public void testGetListWithPaging() {
-        Criteria criteria = new Criteria();
-        List<BoardVO> list = mapper.getListWithPaging(criteria);
+        Criteria criteria = new Criteria(2, 20);
+        List<BoardVO> list = boardMapper.getListWithPaging(criteria);
         list.forEach(boardVO -> log.info(boardVO));
     }
 
@@ -45,7 +46,7 @@ public class BoardMapperTests {
             boardVO.setContent("inserted content");
             boardVO.setWriter("inserted writer");
 
-            mapper.insert(boardVO);
+            boardMapper.insert(boardVO);
             log.info(boardVO);
         }
     }
@@ -57,32 +58,41 @@ public class BoardMapperTests {
         boardVO.setContent("inserted content select key");
         boardVO.setWriter("inserted writer select key");
 
-        mapper.insertSelectKey(boardVO);
+        boardMapper.insertSelectKey(boardVO);
         log.info(boardVO);
     }
 
     @Test
     public void testRead() {
 
-        BoardVO boardVO = mapper.read(5);
-        log.info(mapper);
+        BoardVO boardVO = boardMapper.read(5);
+        log.info(boardMapper);
     }
 
     @Test
     public void testDelete() {
-        log.info("DELETE COUNT: " + mapper.delete(10));
+        log.info("DELETE COUNT: " + boardMapper.delete(10));
     }
 
     @Test
     public void testUpdate() {
         BoardVO boardVO = new BoardVO();
-        boardVO.setBno(5);
+        boardVO.setId(5);
         boardVO.setTitle("updated title");
         boardVO.setContent("updated content");
         boardVO.setWriter("updated writer");
 
-        int count = mapper.update(boardVO);
+        int count = boardMapper.update(boardVO);
         log.info("UPDATE COUNT: " + count);
+    }
+    
+    @Test
+    public void testPaging() {
+        Criteria criteria = new Criteria(2, 20);
+        
+        List<BoardVO> list = boardMapper.getListWithPaging(criteria);
+
+        list.forEach(boardVO -> log.info(boardVO));
     }
 
 }

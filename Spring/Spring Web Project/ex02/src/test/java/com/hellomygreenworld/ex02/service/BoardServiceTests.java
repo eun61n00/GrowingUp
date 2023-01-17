@@ -1,6 +1,7 @@
 package com.hellomygreenworld.ex02.service;
 
 import com.hellomygreenworld.ex02.domain.BoardVO;
+import com.hellomygreenworld.ex02.domain.Criteria;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
@@ -35,14 +36,15 @@ public class BoardServiceTests {
 
         service.register(boardVO);
         log.info("=== testRegister ===");
-        log.info("\tBno of created board: " + boardVO.getBno());
+        log.info("\tBno of created board: " + boardVO.getId());
 
     }
 
     @Test
     public void testGetList() {
         log.info("=== testGetList ===");
-        service.getList().forEach(boardVO -> log.info(boardVO));
+        Criteria criteria = new Criteria();
+        service.getList(criteria).forEach(boardVO -> log.info(boardVO));
     }
 
     @Test

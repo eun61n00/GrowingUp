@@ -57,14 +57,14 @@ public class BoardControllerTests {
     @Test
     public void testGet() throws Exception {
         log.info(mockMvc.perform(MockMvcRequestBuilders.get("/board/get")
-                .param("bno", "1")
+                .param("id", "1")
         ).andReturn().getModelAndView().getModelMap());
     }
 
     @Test
     public void testModify() throws Exception {
         String result = mockMvc.perform(MockMvcRequestBuilders.post("/board/modify")
-                        .param("bno", "13")
+                        .param("id", "13")
                         .param("title", "test title")
                         .param("content", "test content (controller - modify)")
                         .param("writer", "user00")
@@ -78,7 +78,7 @@ public class BoardControllerTests {
     @Test
     public void testRemove() throws Exception {
         String result = mockMvc.perform(MockMvcRequestBuilders.post("/board/remove")
-                .param("bno", "18")
+                .param("id", "18")
         ).andReturn().getModelAndView().getViewName();
 
         log.info(result);

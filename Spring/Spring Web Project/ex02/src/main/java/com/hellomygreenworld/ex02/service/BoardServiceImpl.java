@@ -1,6 +1,7 @@
 package com.hellomygreenworld.ex02.service;
 
 import com.hellomygreenworld.ex02.domain.BoardVO;
+import com.hellomygreenworld.ex02.domain.Criteria;
 import com.hellomygreenworld.ex02.mapper.BoardMapper;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -25,9 +26,9 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardVO get(int bno) {
-        log.info("get - " + bno);
-        return mapper.read(bno);
+    public BoardVO get(int id) {
+        log.info("get - " + id);
+        return mapper.read(id);
     }
 
     @Override
@@ -37,14 +38,14 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public boolean remove(int bno) {
-        log.info("remove - " + bno);
-        return mapper.delete(bno) == 1;
+    public boolean remove(int id) {
+        log.info("remove - " + id);
+        return mapper.delete(id) == 1;
     }
 
     @Override
-    public List<BoardVO> getList() {
-        log.info("get list");
-        return mapper.getList();
+    public List<BoardVO> getList(Criteria criteria) {
+        log.info("get list with criteria - " + criteria);
+        return mapper.getListWithPaging(criteria);
     }
 }
