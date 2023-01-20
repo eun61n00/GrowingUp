@@ -10,3 +10,5 @@
 [submodule "Spring/FastCampus Java Spring Web Development/FastCampus"]
 	path = Spring/FastCampus Java Spring Web Development/FastCampus
 	url = https://github.com/easyspubjava/FastCampus
+[submodule "FastCampus"]
+	branch = master
