@@ -1,14 +1,9 @@
 [submodule "iOS/SwiftUI 기반의 iOS 프로그래밍/SwiftUI"]
-	path = ./iOS/SwiftUI 기반의 iOS 프로그래밍/SwiftUI
+	path = iOS/SwiftUI 기반의 iOS 프로그래밍/SwiftUI
 	url = https://github.com/Jpub/SwiftUI.git
-[submodule "Spring/한 번에 끝내는 Java+Spring 웹 개발/src_FastCampus"]
-	path = ./Spring/한 번에 끝내는 Java+Spring 웹 개발/FastCampus
-	url = https://github.com/easyspubjava/FastCampus.git
 [submodule "React/react-complete-guide-code"]
 	path = React/react-complete-guide-code
 	url = https://github.com/academind/react-complete-guide-code
 [submodule "Spring/FastCampus Java Spring Web Development/FastCampus"]
 	path = Spring/FastCampus Java Spring Web Development/FastCampus
 	url = https://github.com/easyspubjava/FastCampus
-[submodule "FastCampus"]
-	branch = master
