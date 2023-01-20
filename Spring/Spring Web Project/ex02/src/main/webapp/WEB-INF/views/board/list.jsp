@@ -67,8 +67,8 @@
                     </div>
 
                     <form id="actionForm" action="/board/list" method="get">
-                        <input type="hidden" name="pageNum" value="${PageDTO.criteria.getPageNum()}">
-                        <input type="hidden" name="amount" value="${pageDTO.criteria.getAmount()}">
+                        <input type="hidden" name="pageNum" value="<c:out value="${PageDTO.criteria.pageNum}"/>">
+                        <input type="hidden" name="amount" value="<c:out value="${PageDTO.criteria.amount}"/>">
                     </form>
 
                     <!-- Modal Window -->

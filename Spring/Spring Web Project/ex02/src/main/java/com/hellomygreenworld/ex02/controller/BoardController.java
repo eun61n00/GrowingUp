@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @Log4j
-@RequestMapping("/board/*")
+@RequestMapping("/board")
 @AllArgsConstructor
 public class BoardController {
 
@@ -24,9 +24,10 @@ public class BoardController {
     
     @GetMapping("/list")
     public void list(Criteria criteria, Model model) {
+        criteria.setOffset((criteria.getPageNum() - 1) * criteria.getAmount());
         log.info("=== list" + "(criteria: " + criteria + ") ===" );
         model.addAttribute("list", boardService.getList(criteria));
-        model.addAttribute("PageDTO", new PageDTO(criteria, 99));
+        model.addAttribute("PageDTO", new PageDTO(criteria, 200));
     }
 
     @GetMapping("register")

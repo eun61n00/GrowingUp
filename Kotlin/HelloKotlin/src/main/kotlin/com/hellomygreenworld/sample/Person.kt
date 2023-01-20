@@ -1,4 +1,3 @@
 package com.hellomygreenworld.sample
 
-class Person {
-}
+class Person(val name: String, val age: Int)

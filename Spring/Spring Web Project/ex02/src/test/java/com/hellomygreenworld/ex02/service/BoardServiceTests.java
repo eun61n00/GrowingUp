@@ -43,8 +43,8 @@ public class BoardServiceTests {
     @Test
     public void testGetList() {
         log.info("=== testGetList ===");
-        Criteria criteria = new Criteria();
-        service.getList(criteria).forEach(boardVO -> log.info(boardVO));
+//        Criteria criteria = new Criteria();
+        service.getList(new Criteria(3, 10)).forEach(boardVO -> log.info(boardVO));
     }
 
     @Test
