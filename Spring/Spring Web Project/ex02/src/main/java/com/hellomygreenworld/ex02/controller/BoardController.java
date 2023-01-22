@@ -8,10 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -27,7 +24,10 @@ public class BoardController {
         criteria.setOffset((criteria.getPageNum() - 1) * criteria.getAmount());
         log.info("=== list" + "(criteria: " + criteria + ") ===" );
         model.addAttribute("list", boardService.getList(criteria));
-        model.addAttribute("PageDTO", new PageDTO(criteria, 200));
+
+        int total = boardService.getTotalCount(criteria);
+        log.info("\ttotal: " + total);
+        model.addAttribute("PageDTO", new PageDTO(criteria, total));
     }
 
     @GetMapping("register")
@@ -45,25 +45,31 @@ public class BoardController {
     }
 
     @GetMapping({"/get", "/modify"})
-    public void get(@RequestParam("id") int id, Model model) {
+    public void get(@RequestParam("id") int id, @ModelAttribute("criteria") Criteria criteria, Model model) {
         log.info("=== get or modify ===");
+        log.info(criteria);
         model.addAttribute("board", boardService.get(id));
     }
 
     @PostMapping("/modify")
-    public String modify(BoardVO boardVO, RedirectAttributes rttr) {
+    public String modify(BoardVO boardVO, @ModelAttribute("criteria") Criteria criteria, RedirectAttributes rttr) {
         log.info("=== modify: " + boardVO + " ===");
-        if(boardService.modify(boardVO))
+        if(boardService.modify(boardVO)) {
             rttr.addFlashAttribute("result", "success");
+        }
+        rttr.addFlashAttribute("pageNum", criteria.getPageNum());
+        rttr.addFlashAttribute("amount", criteria.getAmount());
         return "redirect:/board/list";
     }
 
     @PostMapping("/remove")
-    public String remove(@RequestParam("id") int id, RedirectAttributes rttr) {
+    public String remove(@RequestParam("id") int id, @ModelAttribute("criteria") Criteria criteria, RedirectAttributes rttr) {
         log.info("=== remove === ");
         if (boardService.remove(id)) {
             rttr.addFlashAttribute("result", "success");
         }
+        rttr.addFlashAttribute("pageNum", criteria.getPageNum());
+        rttr.addFlashAttribute("amount", criteria.getAmount());
         return "redirect:/board/list";
     }
 
