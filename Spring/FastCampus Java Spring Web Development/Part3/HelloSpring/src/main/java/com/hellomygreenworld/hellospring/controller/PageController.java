@@ -22,9 +22,9 @@ public class PageController {
     @GetMapping("/user")
     public UserDTO user() {
         var user = new UserDTO();
-        user.setId("userId00");
-        user.setAddress("fastcampus");
-        user.setPassword("P@ssw0rd");
+        user.setUserId(100);
+        user.setUserAddress("hellomygreenworld");
+        user.setUserPassword("P@ssw0rd");
         return user;
     }
 

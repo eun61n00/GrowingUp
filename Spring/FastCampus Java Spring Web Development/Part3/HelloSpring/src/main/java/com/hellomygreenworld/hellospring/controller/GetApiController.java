@@ -9,9 +9,9 @@ import java.util.Map;
 @RequestMapping("/api/get")
 public class GetApiController {
 
-    @GetMapping(path = "/gethello")
-    public String getHello() {
-        return "get Hello";
+    @GetMapping(path = "/hello")
+    public String hello() {
+        return "Hello";
     }
 
     @RequestMapping(value = "/gethi", method = RequestMethod.GET)
@@ -27,7 +27,7 @@ public class GetApiController {
     }
 
     //http://localhost:8080/api/query-param?user={user_name}&email={email}
-    @GetMapping("/query-param")
+    @GetMapping("/query-param1")
     public String queryParam(@RequestParam Map<String, String> queryParam) {
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -51,9 +51,10 @@ public class GetApiController {
         return user + " " + email + "\n";
     }
 
-    @GetMapping("/query-param03")
-    public String queryParam03(UserDTO user) {
-        return user.toString();
+    @GetMapping("/query-param")
+    public UserDTO queryParam(UserDTO user) {
+//        return user.toString();
+        return user;
     }
 
 }

@@ -12,11 +12,6 @@ import java.util.Map;
 @RequestMapping("/api-controller")
 public class ApiController {
 
-    @GetMapping("/hello")
-    public String  hello() {
-        return "hello spring boot!";
-    }
-
     // TEXT response
     @GetMapping("/text")
     public String text(@RequestParam String account) {
@@ -28,9 +23,14 @@ public class ApiController {
         return userDTO;
     }
 
-    @PutMapping("/put")
-    public ResponseEntity<UserDTO> put(@RequestBody UserDTO userDTO) {
+    @PutMapping("/response-entity")
+    public ResponseEntity<UserDTO> responseEntity(@RequestBody UserDTO userDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userDTO);
+    }
+
+    @PutMapping("/put")
+    public UserDTO put(@RequestBody UserDTO userDTO) {
+        return userDTO;
     }
 
 }
