@@ -12,6 +12,8 @@ for index in 1...20 {
     print(y)
 }
 
+print("Int32 Min = \(Int32.min) Int32 Max = \(Int32.max)")
+
 //: 이것은 한 줄 문서 텍스트다
 /*:
 이것은 여러 줄로 구성된
@@ -24,3 +26,36 @@ for index in 1...20 {
  * The use of **Quick Look**
  * Placing results **in-line** with the code
  */
+
+//var userCount = 10
+let maxUserCount = 20
+
+var userCount: Int
+userCount = 10
+print(userCount)
+
+var signalStrengh = 2.231
+let companyName = "My Company"
+
+let bookTitle: String
+
+if userCount == 10 {
+    bookTitle = "SwiftUI Essentials"
+} else {
+    bookTitle = "Android Studio Development Essentials"
+}
+
+print(bookTitle)
+
+let myTuple = (10, 432.432, "This is a String")
+let myString  = myTuple.2
+print(myString)
+
+var index: Int?
+index = 3
+var treeArray = ["Oak", "Pine", "Yew", "Birch"]
+if index != nil {
+    print(treeArray[index!])
+} else {
+    print("index doew not contain a value")
+}
