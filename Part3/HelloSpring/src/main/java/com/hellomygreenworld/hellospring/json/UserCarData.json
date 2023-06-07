@@ -1,0 +1,21 @@
+{
+  "id" : "user01",
+  "email" : "user@gmail.com",
+  "address" : "Seoul",
+  "password" : "P@ssw0rd"
+  "car_list" : [
+    {
+      "number": 1001,
+      "model": "BMW"
+    },
+    {
+      "number": 1000,
+      "model": "A4"
+    },
+    {
+      "number": 1019,
+      "model": "Benz"
+    }
+    }
+  ]
+}
