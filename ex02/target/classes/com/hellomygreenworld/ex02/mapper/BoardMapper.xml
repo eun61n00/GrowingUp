@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0/EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hellomygreenworld.ex02.mapper.BoardMapper">
+
+    <select id="getList" resultType="com.hellomygreenworld.ex02.domain.BoardVO">
+        <![CDATA[
+        select * from tbl_board where id > 0
+        ]]>
+    </select>
+
+    <select id="getListWithPaging" resultType="com.hellomygreenworld.ex02.domain.BoardVO">
+        select
+            id, title, content
+        from tbl_board
+        limit #{amount} offset #{offset}
+    </select>
+
+    <insert id="insert">
+        insert into tbl_board (title, content, writer)
+        values (#{title}, #{content}, #{writer})
+    </insert>
+
+    <insert id="insertSelectKey" useGeneratedKeys="true" keyProperty="id">
+        insert into tbl_board (title, content, writer)
+        values (#{title}, #{content}, #{writer})
+    </insert>
+
+    <select id="read" resultType="com.hellomygreenworld.ex02.domain.BoardVO">
+        select * from tbl_board where id = #{id}
+    </select>
+
+    <delete id="delete">
+        delete from tbl_board where id = #{id}
+    </delete>
+
+    <update id="update">
+        update tbl_board
+        set title = #{title},
+            content = #{content},
+            writer = #{writer},
+            updateDate = current_time
+            where id = #{id}
+    </update>
+
+    <select id="getTotalCount" resultType="int">
+        select count(*)
+        from tbl_board
+        where id > 0
+    </select>
+
+</mapper>
